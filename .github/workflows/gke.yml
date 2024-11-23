@@ -38,11 +38,11 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
 
-      - name: Construir imagen de docker
-        run: docker build -t ${{ env.NOMBRE_IMAGEN }} .
-
-      - name: Subir imagen de docker al Artifact Registry
-        run: docker push ${{ env.NOMBRE_IMAGEN }}
+      - name: Autenticar, Construir y Subir imagen de docker
+        run: |
+          gcloud --quiet auth configure-docker us-central1-docker.pkg.dev
+          docker build -t ${{ env.NOMBRE_IMAGEN }} .
+          docker push ${{ env.NOMBRE_IMAGEN }}
 
       - name: Aplicar Deployment
         run: kubectl apply -f ./deploy/k8s/deployment.yaml
