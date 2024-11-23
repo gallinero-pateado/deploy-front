@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GKE_CLUSTER: autopilot-cluster-ulink
   GKE_ZONE: us-central1
-  NOMBRE_IMAGEN: us-central1-docker.pkg.dev/${{ PROJECT_ID }}/docker-ulink/${{ github.event.repository.name }}:${{ github.sha }}
+  NOMBRE_IMAGEN: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/docker-ulink/${{ github.event.repository.name }}:${{ github.sha }}
 
 jobs:
   build_publish_deploy:
