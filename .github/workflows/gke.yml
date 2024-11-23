@@ -19,7 +19,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup gcloud CLI
+      - name: Autenticarse con gcloud CLI
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GKE_SA_KEY }}
+
+      - name: Configurar gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
           credentials_json: ${{ secrets.GKE_SA_KEY }}
