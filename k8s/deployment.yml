@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-front
-        image: us-central1-docker.pkg.dev/tss-2s2024/docker-ulink/node-front:v6
+        image: <IMAGEN>
         ports:
         - containerPort: 80
         resources:
