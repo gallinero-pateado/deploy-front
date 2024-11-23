@@ -38,8 +38,17 @@ jobs:
           cluster_name: ${{ env.GKE_CLUSTER }}
           location: ${{ env.GKE_ZONE }}
 
-      - name: prueba del nombre de la imagen
-        run: echo "El valor de IMAGE es $NOMBRE_IMAGEN"
+      - name: Construir imagen de docker
+        run: docker build -t ${{ env.NOMBRE_IMAGEN }} .
 
-      - name: Prueba del Kubernetes
-        run: kubectl get all
+      - name: Subir imagen de docker al Artifact Registry
+        run: docker push ${{ env.NOMBRE_IMAGEN }}
+
+      - name: Aplicar Deployment
+        run: kubectl apply -f ./deploy/k8s/deployment.yaml
+
+      - name: Aplicar Service
+        run: kubectl apply -f ./deploy/k8s/service.yaml
+
+      - name: Aplicar Ingress
+        run: kubectl apply -f ./deploy/k8s/ingress.yaml
