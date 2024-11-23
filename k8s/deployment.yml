@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-front
-        image: <IMAGEN>
+        image: <IMAGE>
         ports:
         - containerPort: 80
         resources:
