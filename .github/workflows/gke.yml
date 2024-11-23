@@ -4,12 +4,12 @@ on:
   push:
     branches: 
       - '"main"'
-s
+
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GKE_CLUSTER: autopilot-cluster-ulink
   GKE_ZONE: us-central1
-  IMAGE: 
+  # IMAGE: 
 
 jobs:
   hello_world:
@@ -22,7 +22,7 @@ jobs:
       - name: Setup gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
-          service_account_key ${{ secrets.GKE_SA_KEY }}
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Configurar Docker para Autenticación
