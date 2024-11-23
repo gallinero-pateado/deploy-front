@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
   GKE_CLUSTER: autopilot-cluster-ulink
   GKE_ZONE: us-central1
-  IMAGE: 
+  # IMAGE: 
 
 jobs:
   hello_world:
