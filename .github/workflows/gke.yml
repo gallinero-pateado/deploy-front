@@ -45,10 +45,10 @@ jobs:
           docker push ${{ env.NOMBRE_IMAGEN }}
 
       - name: Aplicar Deployment
-        run: kubectl apply -f ./deploy/k8s/deployment.yaml
+        run: kubectl apply -f ./k8s/deployment.yaml
 
       - name: Aplicar Service
-        run: kubectl apply -f ./deploy/k8s/service.yaml
+        run: kubectl apply -f ./k8s/service.yaml
 
       - name: Aplicar Ingress
-        run: kubectl apply -f ./deploy/k8s/ingress.yaml
+        run: kubectl apply -f ./k8s/ingress.yaml
